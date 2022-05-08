@@ -1,7 +1,3 @@
-2020.06.28 17:04:30 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
-2020.06.28 17:04:30 in game.GameMap func ProcessMap: Map size (1500, 1900)
-2020.06.28 17:04:30 in game.game func LoadGame: Game loaded
-2020.06.28 17:04:31 in game.game func RunGame: Game start
-2020.06.28 17:04:32 in game.game func PauseGame: Game pause
-2020.06.28 17:04:33 in game.game func StopGame: Game stop
-2020.06.28 17:04:35 in game.game func StopGame: Game stop
+2022.05.08 19:39:30 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
+2022.05.08 19:39:30 in game.GameMap func ProcessMap: Map size (1500, 1900)
+2022.05.08 19:39:30 in game.game func LoadGame: Game loaded
