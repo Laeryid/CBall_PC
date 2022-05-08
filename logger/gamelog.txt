@@ -1,17 +1,7 @@
-2020.10.18 10:52:38 in game.InstrSmooth func __init__: 1
-2020.10.18 10:52:38 in game.InstrSmooth func __init__: 2
-2020.10.18 10:52:38 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
-2020.10.18 10:52:38 in game.GameMap func ProcessMap: Map size (1500, 1900)
-2020.10.18 10:52:38 in game.game func SetStartGameWindow: [0, 0, 0, 0]
-2020.10.18 10:52:38 in game.GameMenu func SetMenuOrientation: (-100, -100, 945.0, 135.0, True)
-2020.10.18 10:52:38 in game.GameScr func LoadGame: Game loaded
-2020.10.18 10:52:39 in game.GameMenu func SetMenuOrientation: (810.0, 0, 945.0, 135.0, False)
-2020.10.18 10:52:40 in game.Instrument func GiveFigure: Figure created
-2020.10.18 10:52:42 in game.Instrument func GiveFigure: Figure created
-2020.10.18 10:52:44 in game.Instrument func GiveFigure: Figure created
-2020.10.18 10:52:50 in game.game func SetStartGameWindow: [0, 0, 0, 0]
-2020.10.18 10:52:50 in game.GameScr func RunGame: Game start
-2020.10.18 10:52:50 in game.GameMenu func SetMenuOrientation: (810.0, 0, 945.0, 135.0, False)
-2020.10.18 10:52:54 in game.GameMenu func SetMenuOrientation: (810.0, 0, 945.0, 135.0, False)
-2020.10.18 10:52:54 in game.game func SetStartGameWindow: [0, 0, 0, 0]
-2020.10.18 10:52:54 in game.GameScr func StopGame: Game stop
+2020.06.28 17:04:30 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
+2020.06.28 17:04:30 in game.GameMap func ProcessMap: Map size (1500, 1900)
+2020.06.28 17:04:30 in game.game func LoadGame: Game loaded
+2020.06.28 17:04:31 in game.game func RunGame: Game start
+2020.06.28 17:04:32 in game.game func PauseGame: Game pause
+2020.06.28 17:04:33 in game.game func StopGame: Game stop
+2020.06.28 17:04:35 in game.game func StopGame: Game stop

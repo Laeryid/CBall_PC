@@ -6,11 +6,6 @@ from kivy import metrics
 import logger
 
 LevelGridColsCount = 5
-GameMenuButtonsCount = 4
-finger_point_size_mm = 10
-
-
-finger_point_size = metrics.mm(finger_point_size_mm)
 
 wall_types = ('Walls', # простые прямые стены
         'RWalls',  # простые круглые стены
@@ -18,12 +13,6 @@ wall_types = ('Walls', # простые прямые стены
         'SSWalls',  # мягкие прямые стены
         'SRWalls',  # мягкие круглые стены
         'JSWalls',  # упругие прямые стены
-        
-)
-
-instruments_types = (
-        'InstrSmooth',  # инструмент "мягкие стены"
-
 )
 
 wall_types_for_beat_calc = (
@@ -68,7 +57,7 @@ def GameMenuPosHint():
         return {'right' : 1}
         
 def GameMenuWidth():
-    return MinWindowSize() / GameMenuButtonsCount
+    return MinWindowSize() / 4
     
 def LevelCellSize_fn():
     sz = MinWindowSize()/LevelGridColsCount

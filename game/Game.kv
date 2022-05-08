@@ -3,17 +3,17 @@
     size_hint: (None, None)
     width: self.game_map_width
     height: self.game_map_height
-    do_rotation: False
-    auto_bring_to_front: False
-    do_collide_after_children: False
-    scale_max: 1.0
+    pos: self.game_window
     canvas.before:
         Color: 
             rgba: (0.0, 0.5, 1.0, 0.2)
         Rectangle:
             size: self.game_map_size
             pos: self.game_map_pos
-    
+        Scale:
+            origin: self.center
+            x: self.scale
+            y: self.scale
             
 <StraitWall>:
     canvas.before:
@@ -38,5 +38,31 @@
 
        
 
-
+<GameScr>:
+    game: GameId
+    game_menu: GameMenuId
+    on_enter: root.LoadGame()
+    on_leave: root.StopGame()
+    FloatLayout:
+        BoxLayout:
+            pos_hint: {"top": 1}
+            height: root.TopLabelSize()
+            size_hint_y: None
+            Button:
+                text: 'ListLevel'
+                on_press: root.manager.current = 'LevelList'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+            Label:
+                id: GameHeadLabel
+                text: "Уровень 0 (тестовый)"
+            Button:
+                text: 'Main'
+                on_press: root.manager.current = 'MainMenu'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+        Game:
+            id: GameId            
+        GameMenu:
+            id: GameMenuId
             

@@ -36,9 +36,6 @@ class StraitWall(drawing.Wall):
             self.NormalVectStart_y = (self.Start_y+self.End_y)/2
             self.NormalVectEnd_x = self.NormalVectStart_x + 50.0 * self.Normal_x
             self.NormalVectEnd_y = self.NormalVectStart_y + 50.0 * self.Normal_y
-            
-    def SaveWall(self):
-        return self.input_data_line
         
     def PointDistance(self, point=(0,0)):
         # Проверяем знак скалярных произведений

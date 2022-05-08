@@ -10,7 +10,6 @@ import game.mechanics as game_mech
 import logger
 import levellist.levellist as llist
 import fn_UI
-import game.InstrSmooth as IS
 
 class GameMap():
     min_x = None
@@ -25,66 +24,24 @@ class GameMap():
     SRWalls = []
     JSWalls = []
     initial_map = None
-    InstrSmooth = []
-    InstrJump = []
-    InstrFigure = []
-    instruments_count = 0
     
     def LoadInitialMap(self, LevelName):
         self.initial_map = llist.GiveLevel[LevelName]()
-        self.ReadLevel(self.initial_map)
+        self.ReadLevel()
     
-    def ReadLevel(self, map):
-        self.ClearLevel()
+    def ReadLevel(self):
+        map = self.initial_map
         self.CBall = map['CBall']
-        self.RestoreLevel(map)
-        for wall in map['InstrSmooth']:
-            self.InstrSmooth.append(IS.InstrSmooth(input_data_line = wall))
-            self.instruments_count += 1
-            
-    def RestoreLevel(self, map):
         for wall in map['Walls']:
             self.Walls.append(SW.StraitWall(input_data_line = wall))
         for wall in map['RWalls']:
-            self.RWalls.append(RW.RoundWall(input_data_line = wall))
+            self.Walls.append(RW.RoundWall(input_data_line = wall))
         for wall in map['SSWalls']:
-            self.SSWalls.append(SmW.SmoothyStraitWall(input_data_line = wall))
+            self.Walls.append(SmW.SmoothyStraitWall(input_data_line = wall))
         for wall in map['SRWalls']:
-            self.SRWalls.append(SmW.SmoothyRoundWall(input_data_line = wall))
+            self.Walls.append(SmW.SmoothyRoundWall(input_data_line = wall))
         for wall in map['JSWalls']:
-            self.JSWalls.append(JW.JumpyStraitWall(input_data_line = wall))
-            
-    def SaveLevel(self):
-        map = {
-            'Walls': [], 
-            'RWalls': [], 
-            'SSWalls': [], 
-            'SRWalls': [], 
-            'JSWalls': [], 
-        }
-        for wall in self.Walls:
-            map['Walls'].append(wall.SaveWall())
-        for wall in self.RWalls:
-            map['RWalls'].append(wall.SaveWall())
-        for wall in self.SSWalls:
-            map['SSWalls'].append(wall.SaveWall())
-        for wall in self.SRWalls:
-            map['SRWalls'].append(wall.SaveWall())
-        for wall in self.JSWalls:
-            map['JSWalls'].append(wall.SaveWall())
-        return map
-    
-    def ClearLevel(self):
-        self.CBall = None
-        self.Walls = []
-        self.RWalls = []
-        self.AWalls = []
-        self.SSWalls = []
-        self.SRWalls = []
-        self.JSWalls = []
-        self.InstrSmooth = []
-        self.InstrJump = []
-        self.InstrFigure = []
+            self.Walls.append(JW.JumpyStraitWall(input_data_line = wall))
         
     def AddAngleWall(self, EndWall, StartWall):
         Angle = EndWall.End

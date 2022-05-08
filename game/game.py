@@ -1,91 +1,73 @@
 import fn_UI
 import game.Ball as ball_mech
 import game.mechanics as game_mech
+from kivy.graphics import Ellipse, Color, Rectangle
 from kivy.clock import Clock
-from kivy.properties import ObjectProperty, NumericProperty, ListProperty, ReferenceListProperty, BooleanProperty
-from kivy.uix.scatter import Scatter
+from kivy.properties import ObjectProperty, NumericProperty, ListProperty, ReferenceListProperty, BooleanProperty, StringProperty
+from kivy.uix.label import Label
+from kivy.uix.relativelayout import RelativeLayout
 from kivy.base import EventLoop
+from kivy.vector import Vector
 import game.GameMap as GM
 import logger
+import game.AngleWall as AW
+import game.GameMenu as game_menu
 from math import floor
 
-
-class Game(Scatter):
-    CBall  = ObjectProperty(None) # Главный шар
-    Figure = ObjectProperty(None) # Выставляемый инструмент
-    GameMap = ObjectProperty(None) # Карта уровня
-    life_time = NumericProperty(None) # Длительность уровня
-    # Сдвиг карты относительно окна
+class Game(RelativeLayout):
+    CBall  = ObjectProperty(None)
+    GameMap = ObjectProperty(None)
+    life_time = NumericProperty(None)
     game_window_x = NumericProperty(0)
     game_window_y = NumericProperty(0)
     game_window = ReferenceListProperty(game_window_x, game_window_y)
-    game_window_size = ListProperty((0,0)) # Размер окна
-    vertical_window = BooleanProperty(True) # Признак, что экран вертикальный
-    # Размер карты уровня
+    scale = NumericProperty(1)
+    game_window_size = ListProperty((0,0))
+    vertical_window = BooleanProperty(True)
     game_map_width = NumericProperty(0)
     game_map_height = NumericProperty(0)
     game_map_size = ReferenceListProperty(game_map_width, game_map_height)
-    # Расположение карты относительно начала области игры (начала координат карты уровня)
     game_map_pos = ListProperty((0,0))
     small_game_map = ListProperty((0,0,0,0)) # карта маленькая в обычном режиме, карта маленькая в режиме перетаскивания
-    game_menu_width = NumericProperty(0)
-    # предел приращения угловой скорости
     avcmv = game_mech.angle_velocity_convertation_max_value
-    status = NumericProperty(0) # статус игры
-    last_second_frames = NumericProperty(0) # FPS актуальный
-    scale_min = NumericProperty(0) # Минимальный масштаб
-    instrument_taken = False # Признак, размещаем ли сейчас инструмент
-    figure = ObjectProperty(None) # фигура, выставляемая игроком в данный момент
-    game_map_history = []
-    game_map_aktual_version = 0 # 0 - initial
-    figure_history = []
+    status = NumericProperty(0)
+    touch_x = NumericProperty(None)
+    touch_y = NumericProperty(None)
+    game_window_x_on_touch = NumericProperty(0)
+    game_window_y_on_touch = NumericProperty(0)
+    last_second_frames = NumericProperty(0)
     
-    # словарь статусов игры
+    
     game_status_dict = {
             0: "Loaded"     ,
             1: "Executing" ,
             2: "Pause"
             }
-            
-    # Обработчики событий
-       
-    def on_touch_move(self, touch):
-        if self.instrument_taken:
-            return True
-        res = super(Game, self).on_touch_move(touch)
-        self.game_window_x = self.CheckWindowX(self.pos[0], self.game_menu_width, 1)
-        self.game_window_y = self.CheckWindowY(self.pos[1], self.game_menu_width, 1)
-        if self.game_window_x != self.pos[0] or self.game_window_y != self.pos[1]:
-            logger.InsertLog((self.pos[0], self.game_window_x)) 
-            self.pos = self.game_window            
-        if self.scale < self.scale_min:
-            self.scale = self.scale_min
-        self.CheckIsMapSmall()
-        return res
- 
-    # функционал фигур
     
-    def AddFigure(self, instrument, pos):
-        new_figure = instrument.GiveFigure(pos)
-        if new_figure is not None:
-            self.figure = new_figure
-            self.figure_history.append(instrument)
-            self.add_widget(self.figure)
-            
-    def MoveFigure(self, pos):
-        self.figure.move_to(pos)          
-    
-    def ReleaseFigure(self):
-        self.game_map_history.append(self.GameMap.SaveLevel())
-        self.game_map_aktual_version += 1
+    def on_touch_down(self, touch):
+        if self.collide_point(*touch.pos):
+            self.touch_x, self.touch_y = touch.pos
+            self.game_window_x_on_touch, self.game_window_y_on_touch = self.game_window
+        return super(Game, self).on_touch_down(touch)
         
-    def RestorePrevVersion(self):
-        self.game_map_history.pop() # удаляем последнюю добавленную версию
-        self.game_map_aktual_version -= 1
-        self.GameMap.RestoreLevel(self.game_map_history[self.game_map_aktual_version])
-        return self.figure_history.pop()
-                
-    # игровой функционал
+    def on_touch_move(self, touch):
+        if self.status == 0 and  self.collide_point(*touch.pos):
+            if self.small_game_map[2] == 0:
+                if self.touch_x is None:
+                    self.touch_x = touch.x
+                if self.game_window_x_on_touch is None:
+                    self.game_window_x_on_touch = self.game_window_x
+                new_window_x = self.game_window_x_on_touch - self.touch_x + touch.x                
+                self.game_window_x = self.CheckWindowX(new_window_x)
+            if self.small_game_map[3] == 0:
+                if self.touch_y is None:
+                    self.touch_y = touch.y
+                if self.game_window_y_on_touch is None:
+                    self.game_window_y_on_touch = self.game_window_y
+                new_window_y = self.game_window_y_on_touch - self.touch_y + touch.y            
+                self.game_window_y = self.CheckWindowY(new_window_y)
+            return True
+        return super(Game, self).on_touch_move(touch)
     
     def CalcFPS(self, dt):
         seconds_check = self.life_time - floor(self.life_time)
@@ -94,6 +76,44 @@ class Game(Scatter):
             self.CBall.WriteInCenter(self.last_second_frames)
             self.last_second_frames = 0
         self.last_second_frames += 1
+    
+    def CreateBall(self):
+        if self.CBall is None:
+            CBall = ball_mech.Ball()
+            CBall.id = 'CBallId'
+            CBall.WriteInCenter(0)
+            self.CBall = CBall
+        self.add_widget(self.CBall)
+        if not self.GameMap is None:
+            self.CBall.center =self.GameMap.CBall
+        self.CBall.velocity = (0, 0)
+        self.CBall.angle_velocity = 0.0
+        self.CBall.angle = 0
+        
+    def CreateWalls(self):
+        if not self.GameMap is None:
+            for wall in self.GameMap.Walls + self.GameMap.RWalls + self.GameMap.SSWalls + self.GameMap.SRWalls + self.GameMap.JSWalls:
+                self.add_widget(wall)
+            
+                            
+    def CheckIsMapSmall(self):
+        menu_size = fn_UI.GameMenuWidth()
+        if (self.GameMap.max_x-self.GameMap.min_x) * self.scale <= self.game_window_size[0]:
+            self.small_game_map[0] = 1
+        else:
+            self.small_game_map[0] = 0
+        if (self.GameMap.max_y-self.GameMap.min_y) * self.scale <= self.game_window_size[1]:
+            self.small_game_map[1] = 1
+        else:
+            self.small_game_map[1] = 0
+        if (self.GameMap.max_x-self.GameMap.min_x) * self.scale <= self.game_window_size[0] - menu_size:
+            self.small_game_map[2] = 1
+        else:
+            self.small_game_map[2] = 0
+        if (self.GameMap.max_y-self.GameMap.min_y) * self.scale <= self.game_window_size[1] - menu_size:
+            self.small_game_map[3] = 1
+        else:
+            self.small_game_map[3] = 0            
 
     def WallBeatCalculate(self, wall, dt, ball_point, ball_radius, on_surface):
         move_coeff = 1
@@ -137,7 +157,63 @@ class Game(Scatter):
                 self.CBall.velocity = game_mech.AddVector(wall.TangentVec(self.CBall.center), wall.NormalVec(self.CBall.center), tangent_vel_abs*(1.0-wall.friction_coeff)-friction_abs + tangent_vel_from_rotation - tangent_vel_strike_loose, - normal_vel_abs)
                 ball_point = self.CBall.NextPos(dt*move_coeff)
         return (ball_point, on_surface)              
-
+                
+    def CheckWindowX(self, new_x):
+        right_padding = 0
+        if self.status == 0 and not self.vertical_window:
+            right_padding = fn_UI.GameMenuWidth()
+        if new_x> - (self.GameMap.min_x * self.scale):
+            return - (self.GameMap.min_x * self.scale)
+        if new_x < - (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding):
+            return - (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding)    
+        return new_x  
+            
+    def CheckWindowY(self, new_y):
+        bot_padding = 0
+        if self.status == 0 and self.vertical_window:
+            bot_padding = fn_UI.GameMenuWidth()
+        if new_y > - (self.GameMap.min_y * self.scale - bot_padding):
+            return - (self.GameMap.min_y * self.scale - bot_padding)
+        if new_y < - (self.GameMap.max_y * self.scale - self.game_window_size[1]):
+            return - (self.GameMap.max_y * self.scale - self.game_window_size[1])    
+        return new_y
+    
+    def MoveScreen(self, dt):
+        Ball = self.CBall.center
+        BallVel = self.CBall.velocity
+        if self.small_game_map[0] == 0:
+            if BallVel[0] < 0 and (self.GameMap.max_x - Ball[0]) * self.scale > self.game_window_size[0] * 0.3 and self.game_window_x < - (self.GameMap.min_x*self.scale): 
+                self.game_window_x -= BallVel[0]*dt
+            if BallVel[0] > 0 and (Ball[0] - self.GameMap.min_x) * self.scale > self.game_window_size[0] * 0.3 and self.game_window_x > - (self.GameMap.max_x*self.scale - self.game_window_size[0]): 
+                self.game_window_x -= BallVel[0]*dt
+            self.game_window_x = self.CheckWindowX(self.game_window_x)
+                  
+        if self.small_game_map[1] == 0:
+            if BallVel[1] < 0 and (self.GameMap.max_y - Ball[1]) * self.scale > self.game_window_size[1] * 0.3 and self.game_window_y < - (self.GameMap.min_y*self.scale): 
+                self.game_window_y -= BallVel[1]*dt
+            if BallVel[1] > 0 and (Ball[1] - self.GameMap.min_y) * self.scale > self.game_window_size[1] * 0.3 and self.game_window_y > - (self.GameMap.max_y*self.scale - self.game_window_size[1]): 
+                self.game_window_y -= BallVel[1]*dt
+            self.game_window_y = self.CheckWindowY(self.game_window_y)
+        
+    def SetStartGameWindow(self):
+        # set window_x
+        if self.small_game_map[0] == 1:
+            self.game_window_x = - self.GameMap.min_x * self.scale
+        else:
+            self.game_window_x = - (self.CBall.center_x * self.scale - self.game_window_size[0] * 0.5)
+            if self.game_window_x > - (self.GameMap.min_x * self.scale):
+                self.game_window_x =  (self.GameMap.min_x * self.scale)
+            if self.game_window_x < - (self.GameMap.max_x * self.scale - self.game_window_size[0]):
+                  self.game_window_x = - (self.GameMap.max_x * self.scale - self.game_window_size[0])                     # set window_y         
+        if self.small_game_map[1] == 1:
+            self.game_window_y = - self.GameMap.min_y * self.scale
+        else:
+            self.game_window_y = - (self.CBall.center_y * self.scale - self.game_window_size[1] * 0.7)
+            if self.game_window_y > - (self.GameMap.min_y * self.scale):
+                self.game_window_y =  (self.GameMap.min_y * self.scale)
+            if self.game_window_y < - (self.GameMap.max_y * self.scale - self.game_window_size[1]):
+                  self.game_window_y = - (self.GameMap.max_y * self.scale - self.game_window_size[1])        
+        
     def MoveGame(self, dt):
         if self.status != 1:
             return False
@@ -148,6 +224,8 @@ class Game(Scatter):
         ball_radius = self.CBall.radius
         GravityLocal = game_mech.Gravity_Global
         on_surface = 0
+#        self.CBall.WriteInCenter(self.CBall.on_surface)
+
         for wall_group in fn_UI.wall_types_for_beat_calc:
             for wall_type in wall_group:
                 for wall in getattr(self.GameMap, wall_type):
@@ -156,87 +234,15 @@ class Game(Scatter):
         self.CBall.Spin(dt)
         self.MoveScreen(dt)
         self.CBall.velocity = game_mech.AddVector(self.CBall.velocity, GravityLocal, 1, dt) 
-        self.CBall.on_surface = on_surface     
-                
-    # управление отрисовкой
-    def to_game_coords(self, widget, pos):
-        window_pos = widget.to_window(pos[0], pos[1], False)
-        game_pos = self.to_widget(window_pos[0], window_pos[1], False)
-        return game_pos
-               
-    def CheckWindowX(self, new_x, padding, game_mod):
-        # game_mod: 1 - don't run, 0 - run
-        scale = self.scale        
-        if self.small_game_map[2*game_mod] == 1:
-            return - (self.GameMap.min_x * scale)
-        if - new_x < (self.GameMap.min_x * scale):
-            return - (self.GameMap.min_x * scale)
-        if - new_x > (self.GameMap.max_x * scale - self.game_window_size[0] + padding):
-            logger.InsertLog((new_x, self.GameMap.max_x, scale, self.game_window_size[0], padding ))
-            return - (self.GameMap.max_x * scale - self.game_window_size[0] + padding)    
-        return new_x  
-            
-    def CheckWindowY(self, new_y, padding, game_mod):
-        # game_mod: 1 - don't run, 0 - run
-        scale = self.scale
-        if self.small_game_map[1 + 2*game_mod] == 1:
-            return - (self.GameMap.max_y * scale - self.game_window_size[1])  
-        if - new_y > (self.GameMap.max_y * scale - self.game_window_size[1]):
-            return - (self.GameMap.max_y * scale - self.game_window_size[1])  
-        if - new_y < (self.GameMap.min_y * scale - padding):
-            return - (self.GameMap.min_y * scale - padding)
-        return new_y
-    
-    def MoveScreen(self, dt):
-        Ball = self.CBall.center
-        BallVel = self.CBall.velocity
-        scale = self.scale
-        if self.small_game_map[0] == 0:
-            if BallVel[0] < 0 and (self.GameMap.max_x - Ball[0]) * scale > self.game_window_size[0] * 0.3 and self.game_window_x < - (self.GameMap.min_x*scale): 
-                self.game_window_x -= BallVel[0]*dt
-            if BallVel[0] > 0 and (Ball[0] - self.GameMap.min_x) * scale > self.game_window_size[0] * 0.3 and self.game_window_x > - (self.GameMap.max_x*scale - self.game_window_size[0]): 
-                self.game_window_x -= BallVel[0]*dt
-            self.game_window_x = self.CheckWindowX(self.game_window_x, 0, 0)
-                  
-        if self.small_game_map[1] == 0:
-            if BallVel[1] < 0 and (self.GameMap.max_y - Ball[1]) * scale > self.game_window_size[1] * 0.3 and self.game_window_y < - (self.GameMap.min_y*scale): 
-                self.game_window_y -= BallVel[1]*dt
-            if BallVel[1] > 0 and (Ball[1] - self.GameMap.min_y) * scale > self.game_window_size[1] * 0.3 and self.game_window_y > - (self.GameMap.max_y*scale - self.game_window_size[1]): 
-                self.game_window_y -= BallVel[1]*dt
-            self.game_window_y = self.CheckWindowY(self.game_window_y, 0, 0)
-        
-        if self.small_game_map[0] == 0 or self.small_game_map[1] == 0:
-            self.pos = self.game_window
-        
-    def SetStartGameWindow(self):
-        # set window_x
-        scale = self.scale
-        logger.InsertLog(self.small_game_map)
-        if self.small_game_map[0] == 1:
-            self.game_window_x = - self.GameMap.min_x * scale
-        else:
-            self.game_window_x = - (self.CBall.center_x * scale - self.game_window_size[0] * 0.5)
-            if self.game_window_x > - (self.GameMap.min_x * scale):
-                self.game_window_x =  (self.GameMap.min_x * scale)
-            if self.game_window_x < - (self.GameMap.max_x * scale - self.game_window_size[0]):
-                  self.game_window_x = - (self.GameMap.max_x * scale - self.game_window_size[0])                     # set window_y         
-        if self.small_game_map[1] == 1:
-            self.game_window_y = - (self.GameMap.max_y * scale - self.game_window_size[1])
-        else:
-            self.game_window_y = - (self.CBall.center_y * scale - self.game_window_size[1] * 0.7)
-            if self.game_window_y > - (self.GameMap.min_y * scale):
-                self.game_window_y =  (self.GameMap.min_y * scale)
-            if self.game_window_y < - (self.GameMap.max_y * scale - self.game_window_size[1]):
-                  self.game_window_y = - (self.GameMap.max_y * scale - self.game_window_size[1])   
-        self.pos = self.game_window       
-           
+        self.CBall.on_surface = on_surface
+   
     def ReadGameWindowSize(self):
         EventLoop.ensure_window()
-        self.game_window_size = (EventLoop.window.size[0], EventLoop.window.size[1] - fn_UI.TopLabelSize())  
-        
-    def SetGameScaling(self, value):
-        self.do_translation = value
-        self.do_scale = value
+        self.game_window_size = (EventLoop.window.size[0], EventLoop.window.size[1] - fn_UI.TopLabelSize())
+
+    def ReadGameMapSize(self):
+        self.game_map_width, self.game_map_height = self.GameMap.game_map_size 
+        self.game_map_pos = (self.GameMap.min_x, self.GameMap.min_y)
         
     def ResizeGame(self, size = None):
         if size is None:
@@ -247,84 +253,32 @@ class Game(Scatter):
             self.vertical_window = True
         else:
             self.vertical_window = False
-        self.game_menu_width = fn_UI.GameMenuWidth()
-        self.ReadGameMapSize()
         self.CheckIsMapSmall()
-        self.SetStartGameWindow()        
-        
-    # Методы взаимодействия с картой   
-    
-    def CreateBall(self):
-        if self.CBall is None:
-            CBall = ball_mech.Ball()
-            CBall.id = 'CBallId'
-            CBall.WriteInCenter(0)
-            self.CBall = CBall
-        self.add_widget(self.CBall)
-        if not self.GameMap is None:
-            self.CBall.center =self.GameMap.CBall
-        self.CBall.velocity = (0, 0)
-        self.CBall.angle_velocity = 0.0
-        self.CBall.angle = 0
-        
-    def ReadGameMapSize(self):
-        self.game_map_width, self.game_map_height = self.GameMap.game_map_size 
-        self.game_map_pos = (self.GameMap.min_x, self.GameMap.min_y)  
-        self.scale_min = min(self.game_window_size[0]/self.game_map_width, self.game_window_size[1]/self.game_map_height)
-        
-    def CreateWalls(self):
-        if not self.GameMap is None:
-            for wall in self.GameMap.Walls + self.GameMap.RWalls + self.GameMap.SSWalls + self.GameMap.SRWalls + self.GameMap.JSWalls:
-                self.add_widget(wall)
-                                        
-    def CheckIsMapSmall(self):
-        scale = self.scale
-        menu_size = self.game_menu_width
-        if self.game_map_width * scale <= self.game_window_size[0]:
-            self.small_game_map[0] = 1
-        else:
-            self.small_game_map[0] = 0
-        if self.game_map_height * scale <= self.game_window_size[1]:
-            self.small_game_map[1] = 1
-        else:
-            self.small_game_map[1] = 0
-        if self.game_map_width * scale <= self.game_window_size[0] - menu_size:
-            self.small_game_map[2] = 1
-        else:
-            self.small_game_map[2] = 0
-        if self.game_map_height  * scale <= self.game_window_size[1] - menu_size:
-            self.small_game_map[3] = 1
-        else:
-            self.small_game_map[3] = 0        
-    
-    # методы управления игрой    
+        self.SetStartGameWindow()
         
     def RunGame(self):
         self.life_time = 0
-        self.SetGameScaling(False)
         self.SetStartGameWindow()
         self.game_schedule = Clock.schedule_interval(self.MoveGame, 1.0/game_mech.FPS)
         
     def StopGame(self):
+#        if self.game_schedule:
+#            self.game_schedule.cancel()  
         self.life_time = 0
-        self.scale = 1.0
-        self.SetGameScaling(True)
         self.remove_widget(self.CBall)
         self.CreateBall()  
-        self.CheckIsMapSmall()
         self.SetStartGameWindow()
         
     def PauseGame(self):
-        self.SetGameScaling(True)
+#        self.game_schedule.cancel()  
+        pass
         
     def ResumeGame(self):
-        self.SetGameScaling(False)
         self.game_schedule = Clock.schedule_interval(self.MoveGame, 1.0/game_mech.FPS)
         
     def LoadGame(self):
         self.clear_widgets()
         self.ReadGameWindowSize()
-        self.game_menu_width = fn_UI.GameMenuWidth()
         self.GameMap = GM.GameMap()
         self.GameMap.LoadInitialMap('level0')
         self.GameMap.ProcessMap()
@@ -332,11 +286,85 @@ class Game(Scatter):
         self.CheckIsMapSmall()
         self.CreateBall()
         self.CreateWalls()
-        self.SetGameScaling(True)
         self.SetStartGameWindow()
 #        self.RunGame()
         
-    def CloseGame(self):
-        self.SetGameScaling(False)
-        self.GameMap.ClearLevel()
 
+class GameScr(fn_UI.CBall_Screen):
+    game_schedule = ObjectProperty(None)
+    game = ObjectProperty(None)
+    game_menu = ObjectProperty(None)
+    window_size = (0.0, 0.0)
+    
+    
+    
+    def __init__ (self,*args,  **kwargs):
+        super(GameScr, self).__init__(*args, **kwargs)
+        
+       
+    def RunGame(self):
+        if self.game.status == 0:
+            self.game.RunGame()
+            logger.InsertLog('Game start')        
+        if self.game.status != 1:
+            self.SetGameStatus(1)
+            
+    def ResumeGame(self):
+        if self.game.status == 2:
+            self.game.ResumeGame()
+            logger.InsertLog('Game restart')
+        if self.game.status != 1:
+            self.SetGameStatus(1)
+        
+            
+    def PauseGame(self):           
+        self.SetGameStatus(2)
+        self.game.PauseGame()       
+        logger.InsertLog('Game pause')
+                 
+                
+    def StopGame(self):
+        self.SetGameStatus(0)   
+        self.game.StopGame()             
+        logger.InsertLog('Game stop')
+
+    def LoadGame(self):
+        self.game.LoadGame()
+        EventLoop.ensure_window()
+        self.window_size = EventLoop.window.size
+        self.game_menu.button_run.on_press = self.RunGame
+        self.game_menu.button_resume.on_press = self.ResumeGame
+        self.game_menu.button_pause.on_press = self.PauseGame
+        self.game_menu.button_stop.on_press = self.StopGame
+        self.SetGameStatus(0)
+        logger.InsertLog('Game loaded')
+        
+    def ResizeGame(self, size):
+        self.game.ResizeGame(size)
+        self.window_size = size
+        self.game_menu.SetMenuOrientation(size)
+
+    def SetGameStatus(self, status):
+        if status == self.game.status and status != 0:
+            return
+        if (status == 0 or self.game.status == 0) and status != self.game.status:
+            menu_status_changed = 1
+        else:
+            menu_status_changed = 0
+        if status == 0:
+            self.game_menu.hidden_buttons["ResumeGameButton"] = True
+            self.game_menu.hidden_buttons["PauseGameButton"] = True
+            self.game_menu.hidden_buttons["LayoutRun"] = True
+            self.game_menu.hidden_buttons["LayoutChange"] = False
+        if status == 1:
+            self.game_menu.hidden_buttons["ResumeGameButton"] = True
+            self.game_menu.hidden_buttons["PauseGameButton"] = False
+            self.game_menu.hidden_buttons["LayoutRun"] = False
+            self.game_menu.hidden_buttons["LayoutChange"] = True
+        if status == 2:
+            self.game_menu.hidden_buttons["ResumeGameButton"] = False
+            self.game_menu.hidden_buttons["PauseGameButton"] = True
+            self.game_menu.hidden_buttons["LayoutRun"] = False
+            self.game_menu.hidden_buttons["LayoutChange"] = True
+        self.game.status = status 
+        self.game_menu.SetMenuOrientation(self.window_size, menu_status_changed)

@@ -1,0 +1,27 @@
+<GameScr>:
+    game: GameId
+    game_menu: GameMenuId
+    on_enter: root.LoadGame()
+    on_leave: root.StopGame()
+    FloatLayout:
+        BoxLayout:
+            pos_hint: {"top": 1}
+            height: root.TopLabelSize()
+            size_hint_y: None
+            Button:
+                text: 'ListLevel'
+                on_press: root.manager.current = 'LevelList'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+            Label:
+                id: GameHeadLabel
+                text: "Уровень 0 (тестовый)"
+            Button:
+                text: 'Main'
+                on_press: root.manager.current = 'MainMenu'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+        Game:
+            id: GameId            
+        GameMenu:
+            id: GameMenuId

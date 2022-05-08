@@ -6,7 +6,7 @@ class LevelListScr(fn_UI.CBall_Screen):
 def AddNecessaryLists(function):
     def wrapper():
         map = function()
-        for WType in fn_UI.wall_types+fn_UI.instruments_types:
+        for WType in fn_UI.wall_types:
                     if not WType in map:
                         map[WType] = []
         return map
@@ -28,10 +28,6 @@ def level0():
     ],
     'JSWalls': [
             (600, 300, 1500, 600)
-    ],
-    'InstrSmooth': [
-            (1, 200, 'M'),
-            (2, 100, 'S')
     ]
     
     }

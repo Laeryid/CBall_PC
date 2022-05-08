@@ -36,9 +36,6 @@ class RoundWall(drawing.Wall):
                 self.End_x = round(self.Center[0] + self.radius * sin(self.angle_end /180*pi), 2)
                 self.End_y = round(self.Center[1] + self.radius * cos(self.angle_end/180*pi), 2)
             self.angle_mid = (self.Center[0] + self.radius*sin((self.angle_end-self.angle_start) /180*pi), self.Center[1] + self.radius*cos((self.angle_end-self.angle_start) /180*pi))
-            
-    def SaveWall(self):
-        return self.input_data_line
                     
     def NormalVec(self, point):
         Normal_x = self.x+self.radius - point[0]
