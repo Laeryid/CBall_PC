@@ -1,0 +1,130 @@
+<GameMenu>:    
+    button_run: RunGameButton
+    button_pause: PauseGameButton
+    button_stop: StopGameButton
+    button_resume: ResumeGameButton
+    button_instruments_open: InstrumentsOpenButton
+    button_instruments_close: InstrumentsCloseButton
+    layout_run: LayoutRun
+    layout_change: LayoutChange
+    layout_instruments: LayoutInstruments
+    instruments_list: InstrumentsListBox
+    size_hint: (None, None)
+    pos: (-100, 0) # чтобы в самом начале не рисовалась фигня
+    RelativeLayout:
+        id: LayoutRun
+        background_color: 0, 0, 0, 0
+        size_hint: (1.0, 1.0)
+        Button:
+            id: PauseGameButton
+            background_color: 0, 0, 0, 0
+ #           color: root.button_color_transparent
+            canvas.before:
+                Color:
+                    rgba: root.button_color_transparent
+                Line:
+                    joint: 'round'
+                    width: 20
+                    points: [self.x+self.width*0.2, self.y+self.height*0.2, self.x+self.width*0.2, self.y+self.height*0.8]
+                Line:
+                    joint: 'round'
+                    width: 20
+                    points: [self.x+self.width*0.8, self.y+self.height*0.2, self.x+self.width*0.8, self.y + self.height*0.8]
+        Button:
+            id: StopGameButton
+            background_color: 0, 0, 0, 0
+#            color: root.button_color
+            canvas.before:
+                Color:
+                    rgba: root.button_color_transparent
+                Rectangle:
+                    pos: (self.x + 0.2*self.width, self.y + 0.2*self.height)
+                    size: (0.6*self.width, 0.6*self.height)
+        Button:
+            id: ResumeGameButton
+            background_color: 0, 0, 0, 0
+#            color: root.button_color
+            canvas.before:
+                Color:
+                    rgba: root.button_color_transparent
+                Line:
+                    joint: 'round'
+                    width: 20
+                    close: 1
+                    points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
+    
+    RelativeLayout:
+        id: LayoutInstruments
+        size_hint: (None, None)
+        canvas.before:
+            Color:
+                rgba: root.menu_color
+            Rectangle:
+                pos: (0,0)
+                size: (self.width, self.height) 
+            Color:
+                rgba: (0, 0, 0, 0.2)
+            Rectangle:
+                pos: (0,0)
+                size: (self.width, self.height) 
+        BoxLayout:
+            id: InstrumentsListBox
+    
+    RelativeLayout:
+        id: LayoutChange
+        size_hint: (1.0, 1.0)
+        canvas.before:
+            Color:
+                rgba: root.menu_color
+            Rectangle:
+                pos: (0,0)
+                size: (root.width, root.height)
+        Button:
+            id: RunGameButton
+            background_color: 0, 0, 0, 0
+#            color: root.button_color
+            canvas.before:
+                Color:
+                    rgba: root.button_color_on_menu
+                Line:
+                    joint: 'round'
+                    width: 20
+                    close: 1
+                    points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
+        Button:
+            id: InstrumentsOpenButton
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color_on_menu
+                PushMatrix:
+                Rotate:
+                    angle: root.button_instruments_angle
+                    axis: 0, 0, 1
+                    origin: root.button_instruments_center
+                Line:
+                    joint: 'round'
+                    width: 20
+                    points: [self.x + self.width*0.2, self.y + self.height*0.4, self.x + self.width*0.5, self.y + self.height*0.7, self.x + self.width*0.8, self.y + self.height*0.4]
+                PopMatrix:
+        Button:
+            id: InstrumentsCloseButton
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color_on_menu
+                PushMatrix:
+                Rotate:
+                    angle: root.button_instruments_angle
+                    axis: 0, 0, 1
+                    origin: root.button_instruments_center
+                Line:
+                    joint: 'round'
+                    width: 20
+                    points: [self.x + self.width*0.2, self.y + self.height*0.6, self.x + self.width*0.5, self.y + self.height*0.3, self.x + self.width*0.8, self.y + self.height*0.6]
+                PopMatrix:
+                
+    
+                    
+           
+    

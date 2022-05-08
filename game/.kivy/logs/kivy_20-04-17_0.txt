@@ -1,0 +1,8 @@
+[INFO   ] Logger: Record log in /storage/emulated/0/qpython/projects3/Kivy/Crushing_Ball/game/.kivy/logs/kivy_20-04-17_0.txt
+[INFO   ] Kivy: v1.11.0.dev0, git-8b6af30, 20190320
+[INFO   ] Python: v3.7.2 (default, Mar 20 2019, 15:02:54) 
+[GCC 8.2.0]
+[WARNING] stderr: Traceback (most recent call last):
+[WARNING] stderr:   File "/storage/emulated/0/qpython/projects3/Kivy/Crushing_Ball/game/drawing.py", line 4, in <module>
+[WARNING] stderr:     class Wall(Widget):
+[WARNING] stderr: NameError: name 'Widget' is not defined

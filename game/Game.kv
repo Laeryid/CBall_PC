@@ -1,0 +1,42 @@
+<Game>:
+#    size_hint: (1.0, 1.0)
+    size_hint: (None, None)
+    width: self.game_map_width
+    height: self.game_map_height
+    do_rotation: False
+    auto_bring_to_front: False
+    do_collide_after_children: False
+    scale_max: 1.0
+    canvas.before:
+        Color: 
+            rgba: (0.0, 0.5, 1.0, 0.2)
+        Rectangle:
+            size: self.game_map_size
+            pos: self.game_map_pos
+    
+            
+<StraitWall>:
+    canvas.before:
+        Color:
+            rgba: self.color
+        Line:
+            points: [self.Start_x, self.Start_y, self.End_x, self.End_y]
+            width: 2.0
+        Line:
+            points: [self.NormalVectStart_x, self.NormalVectStart_y, self.NormalVectEnd_x, self.NormalVectEnd_y]
+            width: 1.0
+            
+<RoundWall>:
+    width: 2*self.radius
+    height: 2*self.radius
+    canvas.before:
+        Color:
+            rgba: self.color
+        Line:
+            circle: (self.x+self.radius, self.y+self.radius, self.radius, self.angle_start, self.angle_end)
+            width: 2.0
+
+       
+
+
+            

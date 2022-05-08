@@ -1,0 +1,24 @@
+<LoggerScr>:
+    logger: LoggerId
+    FloatLayout:
+        BoxLayout:
+            pos_hint: {"top": 1}
+            height: root.ExitSize()*1.2
+            size_hint_y: None
+            Button:
+                text: 'ListLevel'
+                on_press: root.manager.current = 'LevelList'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+            Label:
+                id: GameHeadLabel
+                text: "Логи"
+            Button:
+                text: 'Main'
+                on_press: root.manager.current = 'MainMenu'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+        Logger:
+            id: LoggerId
+            size_hint: (1.0, 1.0)
+            pos: (0,0)

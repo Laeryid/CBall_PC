@@ -1,0 +1,26 @@
+<LevelListScr>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            height: root.TopLabelSize()
+            size_hint_y: None
+            Label:
+                text: "Выберите уровень"
+            Button:
+                text: 'Main'
+                on_press: root.manager.current = 'MainMenu'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+        GridLayout:
+            cols: root.LevelGridColsCount()
+            col_default_width: root.LevelCellSize()
+            col_force_default: True
+            row_default_height: root.LevelCellSize()
+            row_force_default: True
+            Button:
+                text: 'Level 1'
+                on_press: root.manager.current = 'Game'
+            Button:
+                text: 'Level 2'
+                on_press: root.manager.current = 'Game'
+          

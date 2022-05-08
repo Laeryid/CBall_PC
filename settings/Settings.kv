@@ -1,0 +1,14 @@
+<SettingsScr>:
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            height: root.TopLabelSize()
+            size_hint_y: None
+            Label:
+                text: "Настройки"
+            Button:
+                text: 'Main'
+                on_press: root.manager.current = 'MainMenu'
+                size: root.ExitSize(), root.ExitSize()
+                size_hint: None, None
+        AnchorLayout:

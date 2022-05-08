@@ -1,0 +1,18 @@
+<Ball>:
+    size: (2*root.radius, 2*root.radius)
+    canvas.before:
+        Color:
+            rgba: (1.0,1.0,1.0,0.6)
+        Ellipse:
+            size: root.size
+        PushMatrix:
+        Rotate:
+            angle: root.angle
+            axis: 0, 0, -1
+            origin: (root.radius, root.radius)
+        Line:
+            points: [root.radius, root.radius*1.5, root.radius, 2*root.radius]
+            width: 3.0
+        PopMatrix:
+    Label:
+        text: root.text_on_Ball
