@@ -114,7 +114,8 @@ class Game(RelativeLayout):
         if (self.GameMap.max_y-self.GameMap.min_y) * self.scale <= self.game_window_size[1] - menu_size:
             self.small_game_map[3] = 1
         else:
-            self.small_game_map[3] = 0            
+            self.small_game_map[3] = 0
+
 
     def WallBeatCalculate(self, wall, dt, ball_point, ball_radius, on_surface):
         move_coeff = 1
@@ -262,7 +263,7 @@ class Game(RelativeLayout):
    
     def ReadGameWindowSize(self):
         EventLoop.ensure_window()
-        self.game_window_size = (EventLoop.window.size[0], EventLoop.window.size[1] - fn_UI.TopLabelSize())
+        self.game_window_size = EventLoop.window.size
 
     def ReadGameMapSize(self):
         self.game_map_width, self.game_map_height = self.GameMap.game_map_size 
@@ -282,7 +283,7 @@ class Game(RelativeLayout):
         self.SetVertical()
         self.CheckIsMapSmall()
         self.SetGameWindow()
-        logger.InsertLog(self.game_window_size)
+        logger.InsertLog(self.small_game_map)
         
     def RunGame(self):
         self.life_time = 0
@@ -316,5 +317,5 @@ class Game(RelativeLayout):
         self.SetVertical()
         self.CheckIsMapSmall()
         self.SetGameWindow()
-        logger.InsertLog(self.game_window_size)
+        logger.InsertLog(self.small_game_map)
 #        self.RunGame()

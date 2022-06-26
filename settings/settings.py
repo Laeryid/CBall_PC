@@ -1,4 +1,4 @@
-import fn_UI
+import CBall_Screen
 
-class SettingsScr(fn_UI.CBall_Screen):
+class SettingsScr(CBall_Screen.CBall_Screen):
     pass

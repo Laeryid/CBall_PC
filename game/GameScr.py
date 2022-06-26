@@ -1,3 +1,4 @@
+import CBall_Screen
 import fn_UI
 import game.game
 from kivy.properties import ObjectProperty
@@ -5,7 +6,7 @@ import logger
 from kivy.base import EventLoop
 
 
-class GameScr(fn_UI.CBall_Screen):
+class GameScr(CBall_Screen.CBall_Screen):
     game_schedule = ObjectProperty(None)
     game = ObjectProperty(None)
     game_menu = ObjectProperty(None)
@@ -46,12 +47,13 @@ class GameScr(fn_UI.CBall_Screen):
     def LoadGame(self):
         EventLoop.ensure_window()
         self.window_size = EventLoop.window.size
-        self.game.LoadGame()
         self.game_menu.button_run.on_press = self.RunGame
         self.game_menu.button_resume.on_press = self.ResumeGame
         self.game_menu.button_pause.on_press = self.PauseGame
         self.game_menu.button_stop.on_press = self.StopGame
         self.SetGameStatus(0)
+        self.game.LoadGame()
+        self.game_menu.SetMenuOrientation()
         logger.InsertLog('Game loaded')
         
     def ResizeGame(self, size):

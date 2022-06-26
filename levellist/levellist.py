@@ -1,7 +1,7 @@
-import fn_UI
 import constants
+import CBall_Screen
 
-class LevelListScr(fn_UI.CBall_Screen):
+class LevelListScr(CBall_Screen.CBall_Screen):
     pass
    
 def AddNecessaryLists(function):

@@ -1,9 +1,7 @@
 # Класс Экран + Всякие функции для вычисления расположения интерфейсов
 
 from kivy.base import EventLoop
-from kivy.uix.screenmanager import Screen
 from kivy import metrics
-import logger
 import constants
 
 def WindowSize():
@@ -42,21 +40,3 @@ def LevelCellSize_fn():
 
 def TopLabelSize():
     return ExitButtonSize() * 1.2
-
-class CBall_Screen(Screen):
-    def ExitSize(self, *args):
-        return ExitButtonSize()
-    def TopLabelSize(self, *args):
-        return TopLabelSize()
-    def LabelSize(self, *args):
-        return 100
-    def LevelCellSize(self, *args):
-        return LevelCellSize_fn()
-    def LevelGridColsCount(self, *args):
-        return constants.LevelGridColsCount
-    def GameMenuWidth(self):
-        return GameMenuWidth()
-    def GameMenuPosHint(self):
-        return GameMenuPosHint()
-    def RotateGame(self):
-        logger.InsertLog('Rotated on screen ' + type(self).__name__)
