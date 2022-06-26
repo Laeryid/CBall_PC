@@ -1,7 +1,7 @@
 # Класс Экран + Всякие функции для вычисления расположения интерфейсов
 
 from kivy.base import EventLoop
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 from kivy import metrics
 import logger
 

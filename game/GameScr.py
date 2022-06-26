@@ -44,9 +44,9 @@ class GameScr(fn_UI.CBall_Screen):
         logger.InsertLog('Game stop')
 
     def LoadGame(self):
-        self.game.LoadGame()
         EventLoop.ensure_window()
         self.window_size = EventLoop.window.size
+        self.game.LoadGame()
         self.game_menu.button_run.on_press = self.RunGame
         self.game_menu.button_resume.on_press = self.ResumeGame
         self.game_menu.button_pause.on_press = self.PauseGame
@@ -55,8 +55,8 @@ class GameScr(fn_UI.CBall_Screen):
         logger.InsertLog('Game loaded')
         
     def ResizeGame(self, size):
-        self.game.ResizeGame(size)
         self.window_size = size
+        self.game.ResizeGame(size)
         self.game_menu.SetMenuOrientation(size)
 
     def SetGameStatus(self, status):

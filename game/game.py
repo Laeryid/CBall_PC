@@ -36,7 +36,7 @@ class Game(RelativeLayout):
     game_window_x_on_touch = NumericProperty(0)
     game_window_y_on_touch = NumericProperty(0)
     last_second_frames = NumericProperty(0)
-    
+    top_label_size = NumericProperty(fn_UI.TopLabelSize())
     
     game_status_dict = {
             0: "Loaded"     ,
@@ -162,20 +162,31 @@ class Game(RelativeLayout):
         right_padding = 0
         if self.status == 0 and not self.vertical_window:
             right_padding = fn_UI.GameMenuWidth()
-        if new_x> - (self.GameMap.min_x * self.scale):
+            if self.small_game_map[2] == 1:
+                return - ((self.GameMap.max_x + self.GameMap.min_x) * self.scale - self.game_window_size[
+                    0] + right_padding) * 0.5
+        if self.small_game_map[0] == 1:
+            return - ((self.GameMap.max_x + self.GameMap.min_x) * self.scale - self.game_window_size[0]) * 0.5
+        if - new_x < (self.GameMap.min_x * self.scale):
             return - (self.GameMap.min_x * self.scale)
-        if new_x < - (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding):
-            return - (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding)    
+        if - new_x > (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding):
+            return - (self.GameMap.max_x * self.scale - self.game_window_size[0] + right_padding)
+
         return new_x  
             
     def CheckWindowY(self, new_y):
         bot_padding = 0
         if self.status == 0 and self.vertical_window:
             bot_padding = fn_UI.GameMenuWidth()
-        if new_y > - (self.GameMap.min_y * self.scale - bot_padding):
+            if self.small_game_map[3] == 1:
+                return - ((self.GameMap.max_y + self.GameMap.min_y) * self.scale - self.game_window_size[1]) * 0.5
+        if self.small_game_map[1] == 1:
+            return - ((self.GameMap.max_y + self.GameMap.min_y) * self.scale - self.game_window_size[1]) * 0.5
+        if - new_y < (self.GameMap.min_y * self.scale - bot_padding):
             return - (self.GameMap.min_y * self.scale - bot_padding)
-        if new_y < - (self.GameMap.max_y * self.scale - self.game_window_size[1]):
-            return - (self.GameMap.max_y * self.scale - self.game_window_size[1])    
+        if - new_y > (self.GameMap.max_y * self.scale - self.game_window_size[1] + self.top_label_size):
+            return - (self.GameMap.max_y * self.scale - self.game_window_size[1] + self.top_label_size)
+
         return new_y
     
     def MoveScreen(self, dt):
@@ -194,26 +205,38 @@ class Game(RelativeLayout):
             if BallVel[1] > 0 and (Ball[1] - self.GameMap.min_y) * self.scale > self.game_window_size[1] * 0.3 and self.game_window_y > - (self.GameMap.max_y*self.scale - self.game_window_size[1]): 
                 self.game_window_y -= BallVel[1]*dt
             self.game_window_y = self.CheckWindowY(self.game_window_y)
-        
-    def SetStartGameWindow(self):
+
+    def SetScale(self):
+        if self.vertical_window == True:
+            self.scale  =  self.game_window_size[0] * 0.1 / game_mech.Ball_radius
+        else:
+            self.scale  =  self.game_window_size[1] * 0.1 / game_mech.Ball_radius
+        if self.scale > 1.0:
+            self.scale = 1
+
+    def SetGameWindow(self):
+        self.SetScale()
         # set window_x
         if self.small_game_map[0] == 1:
-            self.game_window_x = - self.GameMap.min_x * self.scale
+            self.game_window_x = - (
+                        (self.GameMap.max_x + self.GameMap.min_x) * self.scale - self.game_window_size[0]) * 0.5
         else:
             self.game_window_x = - (self.CBall.center_x * self.scale - self.game_window_size[0] * 0.5)
-            if self.game_window_x > - (self.GameMap.min_x * self.scale):
-                self.game_window_x =  (self.GameMap.min_x * self.scale)
-            if self.game_window_x < - (self.GameMap.max_x * self.scale - self.game_window_size[0]):
-                  self.game_window_x = - (self.GameMap.max_x * self.scale - self.game_window_size[0])                     # set window_y         
+            if - self.game_window_x < (self.GameMap.min_x * self.scale):
+                self.game_window_x = - (self.GameMap.min_x * self.scale)
+            if - self.game_window_x > (self.GameMap.max_x * self.scale - self.game_window_size[0]):
+                  self.game_window_x = - (self.GameMap.max_x * self.scale - self.game_window_size[0])
+        # set window_y
         if self.small_game_map[1] == 1:
-            self.game_window_y = - self.GameMap.min_y * self.scale
+            self.game_window_y = - (
+                        (self.GameMap.max_y + self.GameMap.min_y) * self.scale - self.game_window_size[1]) * 0.5
         else:
             self.game_window_y = - (self.CBall.center_y * self.scale - self.game_window_size[1] * 0.7)
-            if self.game_window_y > - (self.GameMap.min_y * self.scale):
-                self.game_window_y =  (self.GameMap.min_y * self.scale)
-            if self.game_window_y < - (self.GameMap.max_y * self.scale - self.game_window_size[1]):
-                  self.game_window_y = - (self.GameMap.max_y * self.scale - self.game_window_size[1])        
-        
+            if - self.game_window_y < (self.GameMap.min_y * self.scale):
+                self.game_window_y = - (self.GameMap.min_y * self.scale)
+            if - self.game_window_y > (self.GameMap.max_y * self.scale - self.game_window_size[1]):
+                  self.game_window_y = - (self.GameMap.max_y * self.scale - self.game_window_size[1])
+
     def MoveGame(self, dt):
         if self.status != 1:
             return False
@@ -243,22 +266,26 @@ class Game(RelativeLayout):
     def ReadGameMapSize(self):
         self.game_map_width, self.game_map_height = self.GameMap.game_map_size 
         self.game_map_pos = (self.GameMap.min_x, self.GameMap.min_y)
-        
+
+    def SetVertical(self):
+        if self.game_window_size[0] <= self.game_window_size[1]:
+            self.vertical_window = True
+        else:
+            self.vertical_window = False
+
     def ResizeGame(self, size = None):
         if size is None:
             self.ReadGameWindowSize()
         else:
             self.game_window_size = size
-        if self.game_window_size[0] <= self.game_window_size[1]:
-            self.vertical_window = True
-        else:
-            self.vertical_window = False
+        self.SetVertical()
         self.CheckIsMapSmall()
-        self.SetStartGameWindow()
+        self.SetGameWindow()
+        logger.InsertLog(self.game_window_size)
         
     def RunGame(self):
         self.life_time = 0
-        self.SetStartGameWindow()
+        self.SetGameWindow()
         self.game_schedule = Clock.schedule_interval(self.MoveGame, 1.0/game_mech.FPS)
         
     def StopGame(self):
@@ -267,7 +294,7 @@ class Game(RelativeLayout):
         self.life_time = 0
         self.remove_widget(self.CBall)
         self.CreateBall()  
-        self.SetStartGameWindow()
+        self.SetGameWindow()
         
     def PauseGame(self):
 #        self.game_schedule.cancel()  
@@ -278,93 +305,15 @@ class Game(RelativeLayout):
         
     def LoadGame(self):
         self.clear_widgets()
-        self.ReadGameWindowSize()
         self.GameMap = GM.GameMap()
         self.GameMap.LoadInitialMap('level0')
         self.GameMap.ProcessMap()
         self.ReadGameMapSize()
-        self.CheckIsMapSmall()
         self.CreateBall()
         self.CreateWalls()
-        self.SetStartGameWindow()
+        self.ReadGameWindowSize()
+        self.SetVertical()
+        self.CheckIsMapSmall()
+        self.SetGameWindow()
+        logger.InsertLog(self.game_window_size)
 #        self.RunGame()
-        
-
-class GameScr(fn_UI.CBall_Screen):
-    game_schedule = ObjectProperty(None)
-    game = ObjectProperty(None)
-    game_menu = ObjectProperty(None)
-    window_size = (0.0, 0.0)
-    
-    
-    
-    def __init__ (self,*args,  **kwargs):
-        super(GameScr, self).__init__(*args, **kwargs)
-        
-       
-    def RunGame(self):
-        if self.game.status == 0:
-            self.game.RunGame()
-            logger.InsertLog('Game start')        
-        if self.game.status != 1:
-            self.SetGameStatus(1)
-            
-    def ResumeGame(self):
-        if self.game.status == 2:
-            self.game.ResumeGame()
-            logger.InsertLog('Game restart')
-        if self.game.status != 1:
-            self.SetGameStatus(1)
-        
-            
-    def PauseGame(self):           
-        self.SetGameStatus(2)
-        self.game.PauseGame()       
-        logger.InsertLog('Game pause')
-                 
-                
-    def StopGame(self):
-        self.SetGameStatus(0)   
-        self.game.StopGame()             
-        logger.InsertLog('Game stop')
-
-    def LoadGame(self):
-        self.game.LoadGame()
-        EventLoop.ensure_window()
-        self.window_size = EventLoop.window.size
-        self.game_menu.button_run.on_press = self.RunGame
-        self.game_menu.button_resume.on_press = self.ResumeGame
-        self.game_menu.button_pause.on_press = self.PauseGame
-        self.game_menu.button_stop.on_press = self.StopGame
-        self.SetGameStatus(0)
-        logger.InsertLog('Game loaded')
-        
-    def ResizeGame(self, size):
-        self.game.ResizeGame(size)
-        self.window_size = size
-        self.game_menu.SetMenuOrientation(size)
-
-    def SetGameStatus(self, status):
-        if status == self.game.status and status != 0:
-            return
-        if (status == 0 or self.game.status == 0) and status != self.game.status:
-            menu_status_changed = 1
-        else:
-            menu_status_changed = 0
-        if status == 0:
-            self.game_menu.hidden_buttons["ResumeGameButton"] = True
-            self.game_menu.hidden_buttons["PauseGameButton"] = True
-            self.game_menu.hidden_buttons["LayoutRun"] = True
-            self.game_menu.hidden_buttons["LayoutChange"] = False
-        if status == 1:
-            self.game_menu.hidden_buttons["ResumeGameButton"] = True
-            self.game_menu.hidden_buttons["PauseGameButton"] = False
-            self.game_menu.hidden_buttons["LayoutRun"] = False
-            self.game_menu.hidden_buttons["LayoutChange"] = True
-        if status == 2:
-            self.game_menu.hidden_buttons["ResumeGameButton"] = False
-            self.game_menu.hidden_buttons["PauseGameButton"] = True
-            self.game_menu.hidden_buttons["LayoutRun"] = False
-            self.game_menu.hidden_buttons["LayoutChange"] = True
-        self.game.status = status 
-        self.game_menu.SetMenuOrientation(self.window_size, menu_status_changed)

@@ -11,6 +11,7 @@ class GameMenu(RelativeLayout):
     button_resume = ObjectProperty(None)
     button_color_transparent = (0.8, 0.8, 0.8, 0.5)
     button_color_on_menu = fn_UI.button_pict_color
+    menu_buttons_lines_width = NumericProperty(20)
     menu_color = fn_UI.interface_background_color
     layout_run = ObjectProperty(None)
     layout_change = ObjectProperty(None)
@@ -42,7 +43,8 @@ class GameMenu(RelativeLayout):
             self.width = fn_UI.GameMenuWidth()
             self.height = WindowSize[1]
             self.size_hint_x = None
-            self.size_hint_y = 1.0  
+            self.size_hint_y = 1.0
+        self.menu_buttons_lines_width = fn_UI.GameMenuWidth() * 0.15
         self.LayuotChangeDraw(self.vertical_window, menu_status_changed)
         self.LayuotRunDraw(self.vertical_window)
         self.RunButtonDraw(self.vertical_window)

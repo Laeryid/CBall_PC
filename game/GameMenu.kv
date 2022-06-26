@@ -19,11 +19,11 @@
                     rgba: root.button_color_transparent
                 Line:
                     joint: 'round'
-                    width: 20
+                    width: root.menu_buttons_lines_width
                     points: [self.x+self.width*0.2, self.y+self.height*0.2, self.x+self.width*0.2, self.y+self.height*0.8]
                 Line:
                     joint: 'round'
-                    width: 20
+                    width: root.menu_buttons_lines_width
                     points: [self.x+self.width*0.8, self.y+self.height*0.2, self.x+self.width*0.8, self.y + self.height*0.8]
         Button:
             id: StopGameButton
@@ -44,7 +44,7 @@
                     rgba: root.button_color_transparent
                 Line:
                     joint: 'round'
-                    width: 20
+                    width: root.menu_buttons_lines_width
                     close: 1
                     points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
     
@@ -66,7 +66,7 @@
                     rgba: root.button_color_on_menu
                 Line:
                     joint: 'round'
-                    width: 20
+                    width: root.menu_buttons_lines_width
                     close: 1
                     points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
     

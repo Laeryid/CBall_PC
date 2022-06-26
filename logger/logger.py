@@ -12,7 +12,6 @@ def ClearLog():
 
 def InsertLog(log):
     if config.RELEASE_MOD == 'debug':
-        file = io.open(log_file, 'a')         
         logstr = datetime.strftime(datetime.now(), "%Y.%m.%d %H:%M:%S")
         frm = inspect.stack()[1]
         mod = inspect.getmodule(frm[0])
@@ -20,6 +19,7 @@ def InsertLog(log):
         logstr = logstr + ' func ' + frm[3]
         logstr = logstr + ': ' + str(log)
         logstr = logstr + '\n'
+        file = io.open(log_file, 'a')
         file.write(logstr)
         file.close()
 
