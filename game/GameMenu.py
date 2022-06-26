@@ -1,4 +1,5 @@
 import fn_UI
+import constants
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.animation import Animation
 from kivy.properties import ObjectProperty, NumericProperty, BooleanProperty
@@ -10,9 +11,9 @@ class GameMenu(RelativeLayout):
     button_stop = ObjectProperty(None)
     button_resume = ObjectProperty(None)
     button_color_transparent = (0.8, 0.8, 0.8, 0.5)
-    button_color_on_menu = fn_UI.button_pict_color
+    button_color_on_menu = constants.button_pict_color
     menu_buttons_lines_width = NumericProperty(20)
-    menu_color = fn_UI.interface_background_color
+    menu_color = constants.interface_background_color
     layout_run = ObjectProperty(None)
     layout_change = ObjectProperty(None)
     hidden_buttons = {

@@ -1,4 +1,5 @@
 import fn_UI
+import constants
 import game.Ball as ball_mech
 import game.mechanics as game_mech
 from kivy.graphics import Ellipse, Color, Rectangle
@@ -249,7 +250,7 @@ class Game(RelativeLayout):
         on_surface = 0
 #        self.CBall.WriteInCenter(self.CBall.on_surface)
 
-        for wall_group in fn_UI.wall_types_for_beat_calc:
+        for wall_group in constants.wall_types_for_beat_calc:
             for wall_type in wall_group:
                 for wall in getattr(self.GameMap, wall_type):
                     (ball_point, on_surface) = self.WallBeatCalculate(wall, dt, ball_point, ball_radius, on_surface)

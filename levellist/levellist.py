@@ -1,4 +1,5 @@
 import fn_UI
+import constants
 
 class LevelListScr(fn_UI.CBall_Screen):
     pass
@@ -6,7 +7,7 @@ class LevelListScr(fn_UI.CBall_Screen):
 def AddNecessaryLists(function):
     def wrapper():
         map = function()
-        for WType in fn_UI.wall_types:
+        for WType in constants.wall_types:
                     if not WType in map:
                         map[WType] = []
         return map

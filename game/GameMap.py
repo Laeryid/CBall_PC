@@ -10,6 +10,7 @@ import game.mechanics as game_mech
 import logger
 import levellist.levellist as llist
 import fn_UI
+import constants
 
 class GameMap():
     min_x = None
@@ -55,7 +56,7 @@ class GameMap():
         walltype = type(Wall).__name__
         start_found = 0
         end_found = 0
-        for wtype in fn_UI.wall_types:
+        for wtype in constants.wall_types:
             for lwall in getattr(self, wtype):                
                 if Wall.Start_x == lwall.End_x and  Wall.Start_y == lwall.End_y:
                     start_found = 1    
@@ -88,7 +89,7 @@ class GameMap():
             self.UpdateMapBoundaries(wall)
                                                     
     def ProcessMap(self):
-        for wtype in fn_UI.wall_types:
+        for wtype in constants.wall_types:
             self.CheckWallsInList(getattr(self, wtype))
         logger.InsertLog("Map size " + str((self.max_x, self.max_y)))
         self.game_map_size = (self.max_x - self.min_x, self.max_y - self.min_y)
