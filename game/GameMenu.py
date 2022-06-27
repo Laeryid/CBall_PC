@@ -2,7 +2,7 @@ import fn_UI
 import constants
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.animation import Animation
-from kivy.properties import ObjectProperty, NumericProperty, BooleanProperty
+from kivy.properties import ObjectProperty, NumericProperty, BooleanProperty, ListProperty
 import logger
 
 class GameMenu(RelativeLayout):
@@ -10,6 +10,8 @@ class GameMenu(RelativeLayout):
     button_pause = ObjectProperty(None)
     button_stop = ObjectProperty(None)
     button_resume = ObjectProperty(None)
+    button_elem_list = ObjectProperty(None)
+    active_elements_list_button_texture = ListProperty([])
     button_color_transparent = (0.8, 0.8, 0.8, 0.5)
     button_color_on_menu = constants.button_pict_color
     menu_buttons_lines_width = NumericProperty(20)
@@ -20,11 +22,13 @@ class GameMenu(RelativeLayout):
             "RunGameButton": False ,
             "PauseGameButton": True , 
             "StopGameButton": False ,
-            "ResumeGameButton": True,
-            "LayoutRun": True,
+            "ResumeGameButton": True ,
+            "ElemListButton": False ,
+            "LayoutRun": True ,
             "LayoutChange": False
     }
     vertical_window = BooleanProperty(True)
+
 
     
     def SetMenuOrientation(self, WindowSize=fn_UI.WindowSize(),menu_status_changed = 0):
@@ -52,6 +56,7 @@ class GameMenu(RelativeLayout):
         self.ResumeButtonDraw(self.vertical_window)
         self.PauseButtonDraw(self.vertical_window)
         self.StopButtonDraw(self.vertical_window)
+        self.ElemListButtonDraw(self.vertical_window)
 
     def LayuotChangeDraw(self, vertical_window, menu_status_changed):
         if menu_status_changed == 0:
@@ -97,10 +102,10 @@ class GameMenu(RelativeLayout):
             self.button_run.size_hint_y = 1
             self.button_run.size_hint_x = 0.25           
         else:
-            self.button_run.y = 0.75 * self.height
-            self.button_run.x = 0
             self.button_run.size_hint_x = 1
             self.button_run.size_hint_y = 0.25
+            self.button_run.y = self.height - self.width
+            self.button_run.x = 0
             
     def ResumeButtonDraw(self, vertical_window):
         if self.hidden_buttons["ResumeGameButton"]:
@@ -149,3 +154,31 @@ class GameMenu(RelativeLayout):
             self.button_stop.x = 0
             self.button_stop.size_hint_x = 1
             self.button_stop.size_hint_y = 0.25
+
+    def ElemListButtonDraw(self, vertical_window):
+        if vertical_window:
+            self.button_elem_list.x = self.width - self.height
+            self.button_elem_list.y = 0
+            self.button_elem_list.size_hint_y = 1
+            self.button_elem_list.size_hint_x = 0.25
+            self.active_elements_list_button_texture = [
+                self.button_elem_list.x + 0.2 * self.button_elem_list.width
+                , self.button_elem_list.y + (0.5 - 0.15) * self.button_elem_list.height
+                , self.button_elem_list.x + 0.5 * self.button_elem_list.width
+                , self.button_elem_list.y + (0.5 + 0.15) * self.button_elem_list.height
+                , self.button_elem_list.x + 0.8 * self.button_elem_list.width
+                , self.button_elem_list.y + (0.5 - 0.15) * self.button_elem_list.height
+            ]
+        else:
+            self.button_elem_list.y = 0
+            self.button_elem_list.x = 0
+            self.button_elem_list.size_hint_x = 1
+            self.button_elem_list.size_hint_y = 0.25
+            self.active_elements_list_button_texture = [
+                self.button_elem_list.x + (0.5 + 0.15) * self.button_elem_list.width
+                , self.button_elem_list.y + 0.2 * self.button_elem_list.height
+                , self.button_elem_list.x + (0.5 - 0.15) * self.button_elem_list.width
+                , self.button_elem_list.y + 0.5 * self.button_elem_list.height
+                , self.button_elem_list.x + (0.5 + 0.15) * self.button_elem_list.width
+                , self.button_elem_list.y + 0.8 * self.button_elem_list.height
+            ]

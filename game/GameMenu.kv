@@ -3,6 +3,7 @@
     button_pause: PauseGameButton
     button_stop: StopGameButton
     button_resume: ResumeGameButton
+    button_elem_list: ElemListButton
     layout_run: LayoutRun
     layout_change: LayoutChange
     size_hint_y: 0  # чтобы в самом начале не рисовалась фигня
@@ -60,7 +61,6 @@
         Button:
             id: RunGameButton
             background_color: 0, 0, 0, 0
-#            color: root.button_color
             canvas.before:
                 Color:
                     rgba: root.button_color_on_menu
@@ -69,4 +69,14 @@
                     width: root.menu_buttons_lines_width
                     close: 1
                     points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
-    
+        Button:
+            id: ElemListButton
+            background_color: 0, 0, 0, 0
+            canvas.before:
+                Color:
+                    rgba: root.button_color_on_menu
+                Line:
+                    joint: 'round'
+                    width: root.menu_buttons_lines_width
+                    close: 0
+                    points: root.active_elements_list_button_texture
