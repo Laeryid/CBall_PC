@@ -29,6 +29,10 @@ def level0():
     ],
     'JSWalls': [
             (600, 300, 1500, 600)
+    ],
+    'Elements': [
+            # (Type, Size_letter, Size, Count)
+            ('Smoother', 'S', 200, 2)
     ]
     
     }
@@ -40,4 +44,3 @@ GiveLevel = {
 'level0': level0,
 
 }
- 

@@ -32,7 +32,10 @@ def GameMenuPosHint():
         return {'right' : 1}
         
 def GameMenuWidth():
-    return MinWindowSize() / 4
+    return MinWindowSize() * 0.25
+
+def GameMenuProportions():
+    return 0.25
     
 def LevelCellSize_fn():
     sz = MinWindowSize()/constants.LevelGridColsCount

@@ -1,6 +1,6 @@
 from kivy.properties import ObjectProperty
 from kivy.properties import NumericProperty
-from kivy.properties import  ReferenceListProperty
+from kivy.properties import ReferenceListProperty
 from kivy.properties import ListProperty
 from kivy.uix.widget import Widget
 import logger

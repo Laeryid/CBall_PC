@@ -1,4 +1,4 @@
-import game.StraitWall as SW
+import game.Drawing.StraitWall as SW
 from kivy.properties import NumericProperty, ListProperty
 
 jumpy_color = (0.7, 0.7, 1.0, 1.0)

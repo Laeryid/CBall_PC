@@ -1,6 +1,5 @@
-import game.drawing as drawing
+import game.Drawing.drawing as drawing
 import game.mechanics as game_mech
-import logger
 from typing import Tuple
 
 class Angle(drawing.Wall):

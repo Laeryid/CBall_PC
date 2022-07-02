@@ -3,7 +3,7 @@ from kivy.lang import Builder
 from game.GameScr import GameScr
 import game.Ball
 import game.GameMenu
-import game.drawing
+import game.Drawing.drawing
 
 Builder.load_file('game/Game.kv')
 Builder.load_file('game/GameScr.kv')

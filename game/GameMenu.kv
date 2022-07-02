@@ -6,6 +6,7 @@
     button_elem_list: ElemListButton
     layout_run: LayoutRun
     layout_change: LayoutChange
+    layout_elem_list: LayoutElemList
     size_hint_y: 0  # чтобы в самом начале не рисовалась фигня
     RelativeLayout:
         id: LayoutRun
@@ -78,5 +79,7 @@
                 Line:
                     joint: 'round'
                     width: root.menu_buttons_lines_width
-                    close: 0
                     points: root.active_elements_list_button_texture
+    RelativeLayout:
+        id: LayoutElemList
+        background_color: 0, 0, 0, 0

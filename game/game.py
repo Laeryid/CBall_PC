@@ -2,17 +2,12 @@ import fn_UI
 import constants
 import game.Ball as ball_mech
 import game.mechanics as game_mech
-from kivy.graphics import Ellipse, Color, Rectangle
 from kivy.clock import Clock
-from kivy.properties import ObjectProperty, NumericProperty, ListProperty, ReferenceListProperty, BooleanProperty, StringProperty
-from kivy.uix.label import Label
+from kivy.properties import ObjectProperty, NumericProperty, ListProperty, ReferenceListProperty, BooleanProperty
 from kivy.uix.relativelayout import RelativeLayout
 from kivy.base import EventLoop
-from kivy.vector import Vector
 import game.GameMap as GM
 import logger
-import game.AngleWall as AW
-import game.GameMenu as game_menu
 from math import floor
 
 class Game(RelativeLayout):

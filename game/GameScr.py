@@ -12,11 +12,8 @@ class GameScr(CBall_Screen.CBall_Screen):
     game_menu = ObjectProperty(None)
     window_size = (0.0, 0.0)
     
-    
-    
     def __init__ (self,*args,  **kwargs):
         super(GameScr, self).__init__(*args, **kwargs)
-        
        
     def RunGame(self):
         if self.game.status == 0:
@@ -31,18 +28,19 @@ class GameScr(CBall_Screen.CBall_Screen):
             logger.InsertLog('Game restart')
         if self.game.status != 1:
             self.SetGameStatus(1)
-        
             
     def PauseGame(self):           
         self.SetGameStatus(2)
         self.game.PauseGame()       
         logger.InsertLog('Game pause')
-                 
                 
     def StopGame(self):
         self.SetGameStatus(0)   
         self.game.StopGame()             
         logger.InsertLog('Game stop')
+
+    def ElemListChangeStatus(self):
+        self.game_menu.ElemListChangeStatus()
 
     def LoadGame(self):
         EventLoop.ensure_window()
@@ -51,9 +49,10 @@ class GameScr(CBall_Screen.CBall_Screen):
         self.game_menu.button_resume.on_press = self.ResumeGame
         self.game_menu.button_pause.on_press = self.PauseGame
         self.game_menu.button_stop.on_press = self.StopGame
-        self.SetGameStatus(0)
+        self.game_menu.button_elem_list.on_press = self.ElemListChangeStatus
         self.game.LoadGame()
-        self.game_menu.SetMenuOrientation()
+        self.game_menu.elem_count = len(self.game.GameMap.Elems)
+        self.SetGameStatus(0)
         logger.InsertLog('Game loaded')
         
     def ResizeGame(self, size):
@@ -73,15 +72,18 @@ class GameScr(CBall_Screen.CBall_Screen):
             self.game_menu.hidden_buttons["PauseGameButton"] = True
             self.game_menu.hidden_buttons["LayoutRun"] = True
             self.game_menu.hidden_buttons["LayoutChange"] = False
+            self.game_menu.hidden_buttons["ElemListButton"] = False
         if status == 1:
             self.game_menu.hidden_buttons["ResumeGameButton"] = True
             self.game_menu.hidden_buttons["PauseGameButton"] = False
             self.game_menu.hidden_buttons["LayoutRun"] = False
             self.game_menu.hidden_buttons["LayoutChange"] = True
+            self.game_menu.hidden_buttons["ElemListButton"] = True
         if status == 2:
             self.game_menu.hidden_buttons["ResumeGameButton"] = False
             self.game_menu.hidden_buttons["PauseGameButton"] = True
             self.game_menu.hidden_buttons["LayoutRun"] = False
             self.game_menu.hidden_buttons["LayoutChange"] = True
+            self.game_menu.hidden_buttons["ElemListButton"] = True
         self.game.status = status 
         self.game_menu.SetMenuOrientation(self.window_size, menu_status_changed)

@@ -1,15 +1,12 @@
-import io
-import game.drawing
-import game.StraitWall as SW
-import game.RoundWall as RW
-import game.Smoothy as SmW
-import game.Jumpy as JW
-import game.AngleWall as AW
-import game.Ball as ball_mech
+import game.Drawing.StraitWall as SW
+import game.Drawing.RoundWall as RW
+import game.Drawing.Smoothy as SmW
+import game.Drawing.Jumpy as JW
+import game.Drawing.AngleWall as AW
+import game.Elements.Smoother as SE
 import game.mechanics as game_mech
 import logger
 import levellist.levellist as llist
-import fn_UI
 import constants
 
 class GameMap():
@@ -24,6 +21,7 @@ class GameMap():
     SSWalls = []
     SRWalls = []
     JSWalls = []
+    Elems = []
     initial_map = None
     
     def LoadInitialMap(self, LevelName):
@@ -43,6 +41,9 @@ class GameMap():
             self.Walls.append(SmW.SmoothyRoundWall(input_data_line = wall))
         for wall in map['JSWalls']:
             self.Walls.append(JW.JumpyStraitWall(input_data_line = wall))
+        for elem in map['Elements']:
+            if elem[0] == 'Smoother':
+                self.Elems.append(SE.Smoother(input_data_line = elem))
         
     def AddAngleWall(self, EndWall, StartWall):
         Angle = EndWall.End

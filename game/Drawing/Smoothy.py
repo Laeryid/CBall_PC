@@ -1,5 +1,5 @@
-import game.StraitWall as SW
-import game.RoundWall as RW
+import game.Drawing.StraitWall as SW
+import game.Drawing.RoundWall as RW
 from kivy.properties import NumericProperty, ListProperty
 
 smooth_friction = 0.1

@@ -1,22 +1,355 @@
-2022.06.27 11:38:36 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
-2022.06.27 11:38:36 in game.GameMap func ProcessMap: Map size (1500, 1900)
-2022.06.27 11:38:36 in game.game func LoadGame: [0, 0, 0, 0]
-2022.06.27 11:38:36 in game.GameScr func LoadGame: Game loaded
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
-2022.06.27 11:38:39 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:09 in game.GameMap func AddAngleWall: Angle found: [600.0, 300.0]
+2022.07.02 15:54:09 in game.GameMap func ProcessMap: Map size (1500, 1900)
+2022.07.02 15:54:09 in game.game func LoadGame: [0, 0, 0, 0]
+2022.07.02 15:54:09 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:09 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:09 in game.GameScr func LoadGame: Game loaded
+2022.07.02 15:54:10 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:10 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:10 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:10 in game.GameMenu func LayoutElemListDraw: x: -150.0, y: 0
+2022.07.02 15:54:10 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:11 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:11 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:11 in game.GameMenu func LayoutElemListDraw: x: 150.0, y: 0
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:12 in game.game func ResizeGame: [1, 0, 0, 0]
+2022.07.02 15:54:12 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:12 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:13 in game.game func ResizeGame: [1, 0, 0, 0]
+2022.07.02 15:54:13 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:13 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [1, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [1, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [1, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:19 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:19 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:19 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 0, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 0]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:20 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:20 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:20 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:21 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:21 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:21 in game.game func ResizeGame: [0, 1, 0, 1]
+2022.07.02 15:54:22 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:22 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:22 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:22 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:22 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:22 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:22 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:22 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:22 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:22 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: -56.5
+2022.07.02 15:54:23 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:23 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:23 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: -56.5
+2022.07.02 15:54:23 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:23 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:23 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: -56.5
+2022.07.02 15:54:23 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:23 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:24 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:24 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:24 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:24 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: -56.5
+2022.07.02 15:54:24 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:24 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:24 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:24 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:25 in game.GameScr func RunGame: Game start
+2022.07.02 15:54:25 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:25 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:27 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:27 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:27 in game.GameScr func PauseGame: Game pause
+2022.07.02 15:54:29 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:29 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:29 in game.GameScr func StopGame: Game stop
+2022.07.02 15:54:29 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: False
+2022.07.02 15:54:29 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:29 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: True, self.elem_list_is_opened: False
+2022.07.02 15:54:29 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: -56.5
+2022.07.02 15:54:30 in game.GameMenu func ElemListChangeStatus: self.elem_list_is_opened: True
+2022.07.02 15:54:30 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:30 in game.GameMenu func LayoutElemListDraw: self.hidden_buttons[''LayoutElemList'']: False, self.elem_list_is_opened: True
+2022.07.02 15:54:30 in game.GameMenu func LayoutElemListDraw: x: 169.5, y: 56.5
+2022.07.02 15:54:30 in game.GameScr func RunGame: Game start
+2022.07.02 15:54:30 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:30 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:33 in game.GameMenu func RunButtonDraw: Draw Run button
+2022.07.02 15:54:33 in game.GameMenu func ElemListButtonDraw: Draw ElemList button
+2022.07.02 15:54:33 in game.GameScr func StopGame: Game stop

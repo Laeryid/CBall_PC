@@ -1,4 +1,4 @@
-import game.drawing as drawing
+import game.Drawing.drawing as drawing
 from kivy.properties import NumericProperty
 from kivy.properties import  ReferenceListProperty
 from kivy.properties import  ListProperty
