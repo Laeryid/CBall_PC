@@ -19,6 +19,7 @@ class GameMenu(RelativeLayout):
     layout_run = ObjectProperty(None)
     layout_change = ObjectProperty(None)
     layout_elem_list = ObjectProperty(None)
+    layout_elem_list_color = (0.3, 0.5, 0.7, 0.7)
     elem_count = NumericProperty(0)
     hidden_buttons = {
             "RunGameButton": False ,
@@ -59,16 +60,20 @@ class GameMenu(RelativeLayout):
             self.size_hint_y = 1.0
             self.layout_elem_list.height = GameMenuWidth
             self.layout_elem_list.width = GameMenuWidth * self.elem_count
+        self.layout_elem_list.size_hint_x = None
+        self.layout_elem_list.size_hint_y = None
         self.menu_buttons_lines_width = GameMenuWidth * 0.15
         self.menu_proportions = fn_UI.GameMenuProportions()
         self.active_elements_list_button_texture = self.ElemListButtonTexture(self.vertical_window)
         self.LayuotChangeDraw(self.vertical_window, menu_status_changed)
         self.LayuotRunDraw(self.vertical_window)
+        self.LayoutElemListDraw(self.vertical_window)
         self.RunButtonDraw(self.vertical_window)
         self.ResumeButtonDraw(self.vertical_window)
         self.PauseButtonDraw(self.vertical_window)
         self.StopButtonDraw(self.vertical_window)
         self.ElemListButtonDraw(self.vertical_window)
+        logger.InsertLog("self.layout_elem_list.height: {}, self.layout_elem_list.width: {}".format(self.layout_elem_list.height, self.layout_elem_list.width))
 
     def LayuotChangeDraw(self, vertical_window, menu_status_changed):
         if menu_status_changed == 0:
@@ -206,28 +211,28 @@ class GameMenu(RelativeLayout):
         self.elem_list_is_opened = not(self.elem_list_is_opened)
         logger.InsertLog("self.elem_list_is_opened: {}".format(self.elem_list_is_opened))
         self.ElemListButtonDraw(self.vertical_window)
-        self.hidden_buttons['LayoutElemList'] = not(self.elem_list_is_opened)
         self.LayoutElemListDraw(self.vertical_window)
 
     def LayoutElemListDraw(self, vertical_window):
         GameMenuWidth = fn_UI.GameMenuWidth()
-        if (self.hidden_buttons["LayoutElemList"]) or not(self.elem_list_is_opened):
-            if vertical_window:
-                x = self.width - GameMenuWidth
+        if vertical_window:
+            x = self.width - GameMenuWidth
+            if self.hidden_buttons["LayoutElemList"]:
                 y = - GameMenuWidth * self.elem_count
             else:
-                x = self.width
-                y = 0
+                if self.elem_list_is_opened:
+                    y = GameMenuWidth
+                else:
+                    y = GameMenuWidth * (1 - self.elem_count)
         else:
-            if vertical_window:
-                x = self.width - GameMenuWidth
-                y = self.height
+            y = 0
+            if self.hidden_buttons["LayoutElemList"]:
+                x = GameMenuWidth
             else:
-                x = - GameMenuWidth * self.elem_count
-                y = 0
+                if self.elem_list_is_opened:
+                    x = - GameMenuWidth * self.elem_count
+                else:
+                    x = 0
         anim = Animation(x = x, y = y, t = 'in_circ', duration = 0.2)
         anim.start(self.layout_elem_list)
-        logger.InsertLog("self.hidden_buttons[''LayoutElemList'']: {}, self.elem_list_is_opened: {}".format(
-                            self.hidden_buttons["LayoutElemList"]
-                            , self.elem_list_is_opened))
-        logger.InsertLog("x: {}, y: {}".format(x, y))
+

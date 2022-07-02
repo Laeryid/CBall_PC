@@ -49,7 +49,18 @@
                     width: root.menu_buttons_lines_width
                     close: 1
                     points: [self.x + self.width*0.2, self.y + self.height*0.2, self.x + self.width*0.2, self.y + self.height*0.8, self.x + self.width*0.75, self.y + self.height*0.5]
-    
+
+
+    RelativeLayout:
+        id: LayoutElemList
+        background_color: 0, 0, 0, 0
+        canvas.before:
+            Color:
+                rgba: root.layout_elem_list_color
+            Rectangle:
+                pos: (0,0)
+                size: (self.width, self.height)
+
     RelativeLayout:
         id: LayoutChange
         size_hint: (1.0, 1.0)
@@ -80,6 +91,3 @@
                     joint: 'round'
                     width: root.menu_buttons_lines_width
                     points: root.active_elements_list_button_texture
-    RelativeLayout:
-        id: LayoutElemList
-        background_color: 0, 0, 0, 0

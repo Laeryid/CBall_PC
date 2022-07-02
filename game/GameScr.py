@@ -73,17 +73,20 @@ class GameScr(CBall_Screen.CBall_Screen):
             self.game_menu.hidden_buttons["LayoutRun"] = True
             self.game_menu.hidden_buttons["LayoutChange"] = False
             self.game_menu.hidden_buttons["ElemListButton"] = False
+            self.game_menu.hidden_buttons["LayoutElemList"] = False
         if status == 1:
             self.game_menu.hidden_buttons["ResumeGameButton"] = True
             self.game_menu.hidden_buttons["PauseGameButton"] = False
             self.game_menu.hidden_buttons["LayoutRun"] = False
             self.game_menu.hidden_buttons["LayoutChange"] = True
             self.game_menu.hidden_buttons["ElemListButton"] = True
+            self.game_menu.hidden_buttons["LayoutElemList"] = True
         if status == 2:
             self.game_menu.hidden_buttons["ResumeGameButton"] = False
             self.game_menu.hidden_buttons["PauseGameButton"] = True
             self.game_menu.hidden_buttons["LayoutRun"] = False
             self.game_menu.hidden_buttons["LayoutChange"] = True
             self.game_menu.hidden_buttons["ElemListButton"] = True
+            self.game_menu.hidden_buttons["LayoutElemList"] = True
         self.game.status = status 
         self.game_menu.SetMenuOrientation(self.window_size, menu_status_changed)
